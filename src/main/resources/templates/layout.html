@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<title>Alfa Hospital</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/ListStyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/BareMenu.css}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+        .showcase {
+            width: 100%;
+            height: 400px;
+            
+            background:url('https://i.ibb.co/TWxpcsJ/pexels-johannes-plenio-1103970.jpg');
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: flex-end;
+            padding-bottom: 50px;
+            margin-bottom: 20px;
+        }
+
+            .showcase h2, .showcase p {
+                margin-bottom: 10px;
+            }
+
+            .showcase .btn {
+                margin-top: 20px;
+                cursor: pointer;
+                display: inline-block;
+                border: 0;
+                font-weight: bold;
+                padding: 10px 20px;
+                background: #262626;
+                color: #fff;
+                font-size: 15px;
+            }
+
+        div#imga {
+            background: url('https://i.ibb.co/TWxpcsJ/pexels-johannes-plenio-1103970.jpg') no-repeat center center/cover;
+            width: 100%;
+            height: 250px;
+            align-content: center;
+            image-resolution:snap;
+            
+        }
+
+</style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="navigation">
+            <div class="top-menu">
+                <ul class="nav menu">
+                        <li class="item-110 deeper parent">
+                            <a href="/">Home</a>
+                        </li>
+                        <li  sec:authorize="hasRole('Medecin')">
+                        <a class="name" >Medecin</a>
+                            <ul class="nav-child unstyled small">
+                                <li class="item-110 deeper parent">
+                                    <a href="/medecin/index">Liste</a>
+                                </li>
+                                <li class="item-110 deeper parent">
+                                    <a href="/medecin/ajouter">Ajouter medecin</a>
+                                </li>
+                            </ul>
+                        </li>
+                      
+                        <li  sec:authorize="hasRole('ADMIN')">
+                        <a class="name">Patient</a>
+                            <ul class="nav-child unstyled small">
+                                <li class="item-110 deeper parent">
+                                    <a href="/patient/index">Liste</a>
+                                </li>
+                                <li class="item-110 deeper parent">
+                                    <a href="/patient/ajouter">Ajouter patient</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                        <a class="name">Rendez-Vous</a>
+                            <ul class="nav-child unstyled small">
+                                <li class="item-110 deeper parent">
+                                    <a href="/rendezVous/index">Liste</a>
+                                </li>
+                                <li class="item-110 deeper parent">
+                                    <a href="/rendezVous/ajouter">Ajouter rendez-vous</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li  sec:authorize="hasRole('ADMIN')">
+                        <a class="name">Chambre</a>
+                            <ul class="nav-child unstyled small">
+                                <li class="item-110 deeper parent">
+                                    <a href="/chambre/index">Liste</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="item-110 deeper parent"  style="position:absolute;right:20px;" >
+                            <a th:href="@{/logout}">Déconnexion</a>
+                        </li>
+                        
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section layout:fragment="content">
+    
+  	</section>
+
+</body>
+</html>

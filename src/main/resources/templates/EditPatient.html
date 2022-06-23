@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout">
+<head>
+<title>Liste des medecins</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+<section  layout:fragment="content" class="container">
+	    <h2></h2>
+	    <div class="stock-form form-group">
+	    <form   th:action="@{save}" method="post">
+	            <label>Id :</label>
+	            <input name="id" class="stock-form__input form-control" type="text" th:value="${patient.id}" readonly />
+	            <label>Nom :</label>
+	            <input name="fullName" class="stock-form__input form-control" type="text" th:value="${patient.fullName}"/>
+	            <label>Genre :</label>
+	            <input name="Gender" class="stock-form__input form-control" type="text" th:value="${patient.Gender}"/>
+	             <label>maladie :</label>
+	            <input name="maladie" class="stock-form__input form-control" type="text" th:value="${patient.maladie}" />
+	            <button class="js-save submit btn btn-primary"  style="width: 150px;margin-left: 10px;">Modifier</button>
+	     </form>
+	    </div>
+</section>
+</body>
+</html>

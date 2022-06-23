@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout">
+<head>
+<title>Liste des Chambre</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body><section  layout:fragment="content" class="container">
+  <h1>Liste des Chambre</h1>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+          <td>ID</td>
+          <td>Numero d'étage</td>
+          <td>Disponibilté</td>
+      </tr>
+    </thead>
+  <tbody>
+      <tr th:each="s:${listOfChambre}">
+         <td th:text="${s.id}"></td>
+         <td th:text="${s.numEtage}"></td>
+         
+         <td data-th=""  th:if="${s.disponible}">
+             Disponible
+         </td>
+         <td data-th="Quantity"  th:if="!${s.disponible}">
+             Non Disponible
+         </td>
+         <td>
+         <a class="btn btn-danger" onclick="return confirm('Êtes vous sûr?')" th:href="@{/chambre/delete(id=${s.id})}">Supprimer</a>
+	                            -
+	                            <a class="btn btn-info"  th:href="@{/chambre/edit(id=${s.id})}">Modifier</a>
+         </td>
+      </tr>
+         
+  </tbody>
+  </table>
+  </section>
+</body>
+</html>       
+                  
+      

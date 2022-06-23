@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="layout">
+<head>
+<title>Liste des rendez vous</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+<section  layout:fragment="content" class="container">
+  <h1>Liste des rendez-vous</h1>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+          <td>ID</td>
+          <td>Nom</td>
+          <td>Date</td>
+      </tr>
+    </thead>
+  <tbody>
+      <tr th:each="s:${listOfRendezvous}">
+         <td th:text="${s.id}"></td>
+         <td th:text="${s.fullName}"></td>
+         <td th:text="${s.dateRdv}"></td>
+         <td>
+	                            <a class="btn btn-danger" onclick="return confirm('Êtes vous sûr?')" th:href="@{/rendezVous/delete(id=${s.id})}">Supprimer</a>
+	                            -
+	                            <a class="btn btn-info"  th:href="@{/rendezVous/edit(id=${s.id})}">Modifier</a>
+	                        </td>
+      </tr>
+         
+  </tbody>
+  </table>
+</section>
+</body>
+</html>       
+                  
+      
